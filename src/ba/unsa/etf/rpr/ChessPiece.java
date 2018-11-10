@@ -10,8 +10,10 @@ public class ChessPiece {
     protected String position;
     protected Color color;
     public enum Color{BLACK,WHITE};
-    public ChessPiece(String position, Color color) throws IllegalArgumentException {
-        if (!isLegalPosition(position)) throw new IllegalArgumentException();
+    public ChessPiece(String n_pos, Color n_col) throws IllegalArgumentException {
+        if (!isLegalPosition(n_pos)) throw new IllegalArgumentException();
+        position=n_pos;
+        color=n_col;
     }
     public String getPosition() {return this.position;}
     public Color getColor() {return this.color;}
