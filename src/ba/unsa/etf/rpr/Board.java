@@ -36,9 +36,12 @@ public class Board {
         board[7][4] = new King(kolona[7]+red[4],ChessPiece.Color.BLACK);
         board[7][5] = new Bishop(kolona[7]+red[5],ChessPiece.Color.BLACK);
     }
-    
+
     public void move(Class type, ChessPiece.Color color, String position) {}
     public void move(String oldPosition, String newPosition){}
-    public boolean isCheck(ChessPiece.Color color) {return false;
+    public boolean isCheck(ChessPiece.Color color) {
+        return false;
+
+
     }
 }
