@@ -78,4 +78,12 @@ class KingTest {
                 () -> k.move("")
         );
     }
+    @org.junit.jupiter.api.Test
+    void moveIllegal4(){
+        King k = new King("C1", ChessPiece.Color.BLACK);
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> k.move("Start")
+        );
+    }
 }

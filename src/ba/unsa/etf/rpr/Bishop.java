@@ -12,8 +12,8 @@ public class Bishop extends ChessPiece {
     @Override
     public void move(String n_position) throws IllegalArgumentException, IllegalChessMoveException {
         if (!isLegalPosition(n_position)) throw new IllegalArgumentException();
-        else if ((abs(position.charAt(0) - n_position.charAt(0)) == 1) && (abs(position.charAt(1) - n_position.charAt(1)) == 1))
+        if (abs(position.charAt(0) - n_position.charAt(0)) == abs(position.charAt(1) - n_position.charAt(1)) )
             position = n_position;
-        throw new IllegalChessMoveException();
+        else throw new IllegalChessMoveException();
     }
 }

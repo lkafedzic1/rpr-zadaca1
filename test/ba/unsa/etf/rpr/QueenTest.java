@@ -4,55 +4,55 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PawnTest {
+class QueenTest {
 
-    @org.junit.jupiter.api.Test
-    void move2() {
-        Pawn p = new Pawn("E2", ChessPiece.Color.WHITE);
-        assertDoesNotThrow(
-                () -> p.move("E4")
-        );
-    }
-    @Test
-    void move1() {
-        Pawn p = new Pawn("D3", ChessPiece.Color.WHITE);
-        assertDoesNotThrow(
-                () -> p.move("D4")
-        );
-    }
     @Test
     void moveDiagonal() {
-        Pawn b = new Pawn("D5", ChessPiece.Color.WHITE);
-        assertThrows(IllegalChessMoveException.class,
-                () -> b.move("F7")
-        );
-    }
-    @Test
-    void moveBack() {
-        Pawn b = new Pawn("D2", ChessPiece.Color.WHITE);
-        assertThrows(IllegalChessMoveException.class,
-                () -> b.move("D1")
-        );
-    }
-    @Test
-    void moveLeftt() {
-        Pawn b = new Pawn("D3", ChessPiece.Color.WHITE);
-        assertThrows(IllegalChessMoveException.class,
-                () -> b.move("C3")
+        Queen q = new Queen("E1", ChessPiece.Color.WHITE);
+        assertDoesNotThrow(
+                () -> q.move("D2")
         );
     }
     @Test
     void moveRight() {
-        Pawn b = new Pawn("D3", ChessPiece.Color.WHITE);
+        Queen q = new Queen("E1", ChessPiece.Color.WHITE);
+        assertDoesNotThrow(
+                () -> q.move("E2")
+        );
+    }
+    @Test
+    void moveLeft() {
+        Queen q = new Queen("E4", ChessPiece.Color.WHITE);
+        assertDoesNotThrow(
+                () -> q.move("E7")
+        );
+    }
+    @Test
+    void moveFront() {
+        Queen q = new Queen("E1", ChessPiece.Color.WHITE);
+        assertDoesNotThrow(
+                () -> q.move("E5")
+        );
+    }
+    @Test
+    void moveBack() {
+        Queen q = new Queen("D4", ChessPiece.Color.WHITE);
+        assertDoesNotThrow(
+                () -> q.move("D2")
+        );
+    }
+    @Test
+    void moveWrong() {
+        Queen q = new Queen("D4", ChessPiece.Color.WHITE);
         assertThrows(IllegalChessMoveException.class,
-                () -> b.move("E3")
+                () -> q.move("f5")
         );
     }
     @Test
     void constructor1() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new Pawn("I2", ChessPiece.Color.WHITE)
+                () -> new Queen("I2", ChessPiece.Color.WHITE)
         );
     }
 
@@ -60,7 +60,7 @@ class PawnTest {
     void constructor2() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new Pawn("B9", ChessPiece.Color.WHITE)
+                () -> new Queen("B9", ChessPiece.Color.WHITE)
         );
     }
 
@@ -68,12 +68,12 @@ class PawnTest {
     void constructor3() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new Pawn("", ChessPiece.Color.WHITE)
+                () -> new Queen("", ChessPiece.Color.WHITE)
         );
     }
     @Test
     void moveIllegal1() {
-        Pawn k = new Pawn("C1", ChessPiece.Color.BLACK);
+        Queen k = new Queen("C1", ChessPiece.Color.BLACK);
         assertThrows(
                 IllegalArgumentException.class,
                 () -> k.move("C0")
@@ -82,7 +82,7 @@ class PawnTest {
 
     @Test
     void moveIllegal2() {
-        Pawn k = new Pawn("H1", ChessPiece.Color.BLACK);
+        Queen k = new Queen("H1", ChessPiece.Color.BLACK);
         assertThrows(
                 IllegalArgumentException.class,
                 () -> k.move("I1")
@@ -91,7 +91,7 @@ class PawnTest {
 
     @Test
     void moveIllegal3() {
-        Pawn k = new Pawn("C1", ChessPiece.Color.BLACK);
+        Queen k = new Queen("C1", ChessPiece.Color.BLACK);
         assertThrows(
                 IllegalArgumentException.class,
                 () -> k.move("")
@@ -99,12 +99,11 @@ class PawnTest {
     }
     @Test
     void moveIllegal4(){
-        Pawn k = new Pawn("C1", ChessPiece.Color.BLACK);
+        Queen k = new Queen("C1", ChessPiece.Color.BLACK);
         assertThrows(
                 IllegalArgumentException.class,
                 () -> k.move("Start")
         );
     }
-
 
 }

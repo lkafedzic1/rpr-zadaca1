@@ -4,55 +4,47 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PawnTest {
-
-    @org.junit.jupiter.api.Test
-    void move2() {
-        Pawn p = new Pawn("E2", ChessPiece.Color.WHITE);
+class RookTest {
+    @Test
+    void moveRight() {
+        Rook r = new Rook("E1", ChessPiece.Color.WHITE);
         assertDoesNotThrow(
-                () -> p.move("E4")
+                () -> r.move("E2")
         );
     }
     @Test
-    void move1() {
-        Pawn p = new Pawn("D3", ChessPiece.Color.WHITE);
+    void moveLeft() {
+        Rook r = new Rook("E4", ChessPiece.Color.WHITE);
         assertDoesNotThrow(
-                () -> p.move("D4")
+                () -> r.move("E7")
         );
     }
     @Test
-    void moveDiagonal() {
-        Pawn b = new Pawn("D5", ChessPiece.Color.WHITE);
-        assertThrows(IllegalChessMoveException.class,
-                () -> b.move("F7")
+    void moveFront() {
+        Rook r = new Rook("E1", ChessPiece.Color.WHITE);
+        assertDoesNotThrow(
+                () -> r.move("E5")
         );
     }
     @Test
     void moveBack() {
-        Pawn b = new Pawn("D2", ChessPiece.Color.WHITE);
-        assertThrows(IllegalChessMoveException.class,
-                () -> b.move("D1")
+        Rook r = new Rook("D4", ChessPiece.Color.WHITE);
+        assertDoesNotThrow(
+                () -> r.move("D2")
         );
     }
     @Test
-    void moveLeftt() {
-        Pawn b = new Pawn("D3", ChessPiece.Color.WHITE);
+    void moveDiagonal() {
+        Rook b = new Rook("D5", ChessPiece.Color.WHITE);
         assertThrows(IllegalChessMoveException.class,
-                () -> b.move("C3")
-        );
-    }
-    @Test
-    void moveRight() {
-        Pawn b = new Pawn("D3", ChessPiece.Color.WHITE);
-        assertThrows(IllegalChessMoveException.class,
-                () -> b.move("E3")
+                () -> b.move("F7")
         );
     }
     @Test
     void constructor1() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new Pawn("I2", ChessPiece.Color.WHITE)
+                () -> new Rook("I2", ChessPiece.Color.WHITE)
         );
     }
 
@@ -60,7 +52,7 @@ class PawnTest {
     void constructor2() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new Pawn("B9", ChessPiece.Color.WHITE)
+                () -> new Rook("B9", ChessPiece.Color.WHITE)
         );
     }
 
@@ -68,12 +60,12 @@ class PawnTest {
     void constructor3() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new Pawn("", ChessPiece.Color.WHITE)
+                () -> new Rook("", ChessPiece.Color.WHITE)
         );
     }
     @Test
     void moveIllegal1() {
-        Pawn k = new Pawn("C1", ChessPiece.Color.BLACK);
+        Rook k = new Rook("C1", ChessPiece.Color.BLACK);
         assertThrows(
                 IllegalArgumentException.class,
                 () -> k.move("C0")
@@ -82,7 +74,7 @@ class PawnTest {
 
     @Test
     void moveIllegal2() {
-        Pawn k = new Pawn("H1", ChessPiece.Color.BLACK);
+        Rook k = new Rook("H1", ChessPiece.Color.BLACK);
         assertThrows(
                 IllegalArgumentException.class,
                 () -> k.move("I1")
@@ -91,7 +83,7 @@ class PawnTest {
 
     @Test
     void moveIllegal3() {
-        Pawn k = new Pawn("C1", ChessPiece.Color.BLACK);
+        Rook k = new Rook("C1", ChessPiece.Color.BLACK);
         assertThrows(
                 IllegalArgumentException.class,
                 () -> k.move("")
@@ -99,7 +91,7 @@ class PawnTest {
     }
     @Test
     void moveIllegal4(){
-        Pawn k = new Pawn("C1", ChessPiece.Color.BLACK);
+        Rook k = new Rook("C1", ChessPiece.Color.BLACK);
         assertThrows(
                 IllegalArgumentException.class,
                 () -> k.move("Start")
