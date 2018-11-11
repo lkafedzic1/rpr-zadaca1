@@ -1,9 +1,11 @@
 package ba.unsa.etf.rpr;
 
 public class Board {
+    ChessPiece[][] board;
+
     //Pocetni izgled table definisemo konstruktorom
     public Board() {
-        ChessPiece[][] board= new ChessPiece[8][8];
+        board= new ChessPiece[8][8];
         String[] kolona= new String[] {"a","b","c","d","e","f","g","h"};
         String[] red=new String[] {"1","2","3","4","5","6","7","8"};
 
@@ -37,11 +39,32 @@ public class Board {
         board[7][5] = new Bishop(kolona[7]+red[5],ChessPiece.Color.BLACK);
     }
 
-    public void move(Class type, ChessPiece.Color color, String position) {}
-    public void move(String oldPosition, String newPosition){}
+    public void move(Class type, ChessPiece.Color color, String position) throws IllegalChessMoveException {
+        int i, j;
+        Vanjska: for(i=1;i<=8;i++) {
+            for(j=1;j<=8;j++) {
+                if (type.isInstance(board[i][j]) && color==board[i][j].getColor()) {
+                    board[i][j].move(position);
+                    if(board[i][j].getPosition().equals(position)) {
+
+                        break Vanjska;
+                    }
+                }
+                else if(i==8 && j==8) throw new IllegalChessMoveException();
+            }
+        }
+
+
+
+
+    }
+    public void move(String oldPosition, String newPosition){
+
+
+    }
     public boolean isCheck(ChessPiece.Color color) {
+
+
         return false;
-
-
     }
 }
